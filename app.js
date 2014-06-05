@@ -4,9 +4,9 @@
 
 var embedlyModule = angular.module('embedlyModule', []);
 
-//embedlyModule.run(function($templateCache) {
-//    $templateCache.put('embedly.html',
-//        '<input type="text" ng-model="searchUrl">' +
-//        '<button>click</button>');
-//});
-
+embedlyModule.factory('initParams', function(){
+    return {
+        //here enter key
+        key: 'your key'
+    }
+})
