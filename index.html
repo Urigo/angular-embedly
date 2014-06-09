@@ -5,12 +5,14 @@
     <title>My HTML File</title>
     <script src="bower_components/angular/angular.js"></script>
     <script src="app.js"></script>
-    <script src="directives/em-oembed.js"></script>
-    <script src="directives/em-extract.js"></script>
+    <script src="controllers/embedCtrl.js"></script>
+    <script src="directives/em-embed.js"></script>
 </head>
 <body>
-    <em-oembed></em-oembed>
-    <em-extract></em-extract>
-
+    <div ng-controller="embedCtrl">
+        <input type="text" ng-model="urlToSearch">
+        <button ng-click="buttonClicked.checkInputUrl()">search url</button>
+        <em-embed urlsearch="urlToSearch" checkinput="buttonClicked"></em-embed>
+    </div>
 </body>
 </html>
