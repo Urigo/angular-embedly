@@ -2,25 +2,18 @@
  * Created by moran on 09/06/14.
  */
 
-embedlyModule.directive('emEmbed', function(initParams) {
+embedlyModule.directive('emEmbed', function(embedlyService) {
     return {
         restrict: 'E',
         scope:{
-            urlsearch: '=',
-            checkinput: '='
         },
-        controller: function($scope, $http, initParams){
+        controller: function($scope){
             $scope.embedCode = '';
-            $scope.checkUrl = function(requestType, urlToSearch) {
-                var embedlyRequest = 'http://api.embed.ly/1/' + requestType + '?key=' + initParams.key + '&url=' +  urlToSearch;
-                return $http({method: 'GET', url: embedlyRequest});
-            }
         },
         link: function(scope, element, attrs, controller) {
-            scope.checkinput.checkInputUrl = function() {
-                var escapedUrl = escape(scope.urlsearch);
-                    var type = 'oembed';
-                    scope.checkUrl(type, escapedUrl)
+            attrs.$observe('urlsearch', function(newVal) {
+                if (newVal) {
+                    embedlyService.embed(newVal)
                         .then(function(data){
                             var previousEmbedCode = scope.embedCode;
                             scope.embedCode = '<div>' + data.data.html + '</div>';
@@ -28,14 +21,15 @@ embedlyModule.directive('emEmbed', function(initParams) {
                                 element.html(scope.embedCode);
                             }
                         }, function(error) {
-                        // promise rejected
+                            // promise rejected
                             var previousEmbedCode = scope.embedCode;
                             scope.embedCode = '<div></div>';
                             if(previousEmbedCode !== scope.embedCode) {
                                 element.html(scope.embedCode);
                             }
-                    });
-            }
+                        });
+                }
+            });
         }
     };
 });

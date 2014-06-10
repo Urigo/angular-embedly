@@ -4,6 +4,4 @@
 
 function embedCtrl($scope) {
     $scope.urlToSearch = '';
-    $scope.buttonClicked = function() {
-    };
 }
