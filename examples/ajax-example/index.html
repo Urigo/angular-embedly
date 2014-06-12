@@ -9,7 +9,13 @@
 </head>
 <body>
     <div ng-controller="embedCtrl2">
-        <em-embed urlsearch="{{urlToSearch}}"></em-embed>
+        <ul>
+            <li ng-repeat="value in values" >
+                <p>{{value.firstName}} {{value.lastName}}</p>
+                <em-embed urlsearch="{{value.inputUrl}}"></em-embed>
+            </li>
+        </ul>
+
     </div>
 </body>
 </html>
