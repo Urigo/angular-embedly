@@ -8,9 +8,9 @@ embedlyModule.config(function(embedlyServiceProvider){
     embedlyServiceProvider.setKey('your key');
 });
 
-function embedCtrl2($scope, $http) {
+embedlyModule.controller('embedCtrl2', function($scope, $http) {
     $scope.values = [];
     $http.get('values.json').success(function(data) {
         $scope.values = data;
     });
-}
+});
