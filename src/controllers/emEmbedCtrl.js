@@ -5,5 +5,8 @@
 (function (module) {
     module.controller('emEmbedCtrl', function($scope) {
         $scope.embedCode = '';
+//        $scope.sayHello = function(){
+//            $scope.embedCode = 'hello';
+//        }
     })
 })(angularEmbedly);
