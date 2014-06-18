@@ -7,10 +7,11 @@
         return {
             restrict: 'E',
             scope:{
+                urlsearch: '@'
             },
             controller: 'emEmbedCtrl',
-            link: function(scope, element, attrs, controller) {
-                attrs.$observe('urlsearch', function(newVal) {
+            link: function(scope, element) {
+                scope.$watch('urlsearch', function(newVal) {
                     var previousEmbedCode = scope.embedCode;
                     if (newVal) {
                         embedlyService.embed(newVal)
