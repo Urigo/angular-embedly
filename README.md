@@ -21,7 +21,8 @@ myApp.config(function(embedlyServiceProvider){
     embedlyServiceProvider.setKey('your key');
 });
   ```
-4. Set ```javascript
+4. Set 
+ ```javascript
 $scope.urlToSearch = '';
   ```
 in your controller
