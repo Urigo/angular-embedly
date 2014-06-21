@@ -20,11 +20,10 @@ myApp.config(function(embedlyServiceProvider){
     embedlyServiceProvider.setKey('your key');
 });
   ```
-4. Set `urlToSearch` in scope
+4. Set `urlToSearch`. e.g,
  ```javascript
 $scope.urlToSearch;
   ```
-in your controller
 5. Add angular-embedly directive to the html
   ```html
   <em-embed urlsearch="{{urlToSearch}}"></em-embed>
