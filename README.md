@@ -12,7 +12,7 @@ Note: The directive only supports embedding of video and photo.
 * Add angular-embedly to your project `bower install angular-embedly`
 * Add to your main file (index.html)
 ```html
- <script src="bower_components/angular-embedly.js"></script>
+ <script src="bower_components/angular-embedly/angular-embedly.js"></script>
 ```
 * Set `angular-embedly` as a dependency of your module.
 ```javascript
