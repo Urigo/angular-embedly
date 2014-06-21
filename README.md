@@ -9,21 +9,21 @@ Note: The directive only supports embedding of video and photo.
 
 ## Usage of angular-embedly directive
 
-1. Add angular-embedly to your project `bower install angular-embedly`
-2. Set `angular-embedly` as a dependency of your module.
-    ```javascript
-        var myApp = angular.module('myApp', ['angular-embedly']);
-    ```
-3. Set your embed.ly key in myApp.config
-    ```javascript
-        myApp.config(function(embedlyServiceProvider){
-            embedlyServiceProvider.setKey('your key');
-        });
-    ```
-4. Add angular-embedly directive to the html
-    ```html
-        <em-embed urlsearch="{{your.url.goes.here}}"></em-embed>
-    ```
+* Add angular-embedly to your project `bower install angular-embedly`
+* Set `angular-embedly` as a dependency of your module.
+```javascript
+    var myApp = angular.module('myApp', ['angular-embedly']);
+```
+* Set your embed.ly key in myApp.config
+```javascript
+    myApp.config(function(embedlyServiceProvider){
+        embedlyServiceProvider.setKey('your key');
+    });
+```
+* Add angular-embedly directive to the html
+```html
+    <em-embed urlsearch="{{your.url.goes.here}}"></em-embed>
+```
 
 
 ## Example
