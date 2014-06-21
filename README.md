@@ -2,7 +2,7 @@ angular-embedly – angular wrapper for embed.ly
 ==============================================
 
 This module utilizes the embed.ly functionality and wraps it in angular entities. The module comprises a directive and a service, which supports embed.ly's embedding API and their information extraction API. 
-To embed a video or a photo use the directive, and for the information extraction use the service.
+To embed a video or a photo use the directive, and for information extraction use the service.
 
 Note: The directive only supports embedding of video and photo.
 
@@ -11,25 +11,19 @@ Note: The directive only supports embedding of video and photo.
 
 1. Add angular-embedly to your project `bower install angular-embedly`
 2. Set `angular-embedly` as a dependency of your module.
-```javascript
-var myApp = angular.module('myApp', ['angular-embedly']);
-```
+    ```javascript
+    var myApp = angular.module('myApp', ['angular-embedly']);
+    ```
 3. Set your embed.ly key in myApp.config
-```javascript
-myApp.config(function(embedlyServiceProvider){
-    embedlyServiceProvider.setKey('your key');
-});
-```
-4. Set `urlToSearch`. e.g,
-```javascript
-myApp.controller('myCtrl', function($scope) {
-    $scope.urlToSearch = '';
-});
-```
-5. Add angular-embedly directive to the html
-```html
-<em-embed urlsearch="{{urlToSearch}}"></em-embed>
-```
+    ```javascript
+    myApp.config(function(embedlyServiceProvider){
+        embedlyServiceProvider.setKey('your key');
+    });
+    ```
+4. Add angular-embedly directive to the html
+    ```html
+    <em-embed urlsearch="{{your.url.goes.here}}"></em-embed>
+    ```
 
 
 ## Example
