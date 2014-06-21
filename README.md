@@ -17,7 +17,7 @@ var myApp = angular.module('myApp', ['angular-embedly']);
 3. Set your embed.ly key in myApp.config
 ```javascript
 myApp.config(function(embedlyServiceProvider){
-embedlyServiceProvider.setKey('your key');
+    embedlyServiceProvider.setKey('your key');
 });
 ```
 4. Set `urlToSearch`. e.g,
@@ -25,7 +25,6 @@ embedlyServiceProvider.setKey('your key');
 myApp.controller('myCtrl', function($scope) {
     $scope.urlToSearch = '';
 });
-$scope.urlToSearch;
 ```
 5. Add angular-embedly directive to the html
 ```html
