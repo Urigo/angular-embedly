@@ -13,7 +13,6 @@ describe('Unit: embedlyDirective', function() {
         module('angular-embedly', function ($provide) {
             mockService = {
                 embed: function () {
-//                    return {'type': 'photo'};
                     deferred = q.defer();
                     // Place the fake return object here
                     deferred.resolve({ 'data': {'type': 'video',

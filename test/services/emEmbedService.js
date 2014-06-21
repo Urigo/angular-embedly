@@ -3,7 +3,6 @@
  */
 
 describe('Unit: embedlyService', function() {
-//    var embedlyMockService;
     var $httpBackend;
     var service;
     var escapedUrl = encodeURI('https://www.youtube.com/watch?v=vIaH35-MLsk');
