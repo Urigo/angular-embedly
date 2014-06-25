@@ -1,10 +1,11 @@
 {
   "name": "angular-embedly",
   "version": "0.0.0",
-  "description": "",
+  "description": "angular-embedly – angular wrapper for embed.ly ==============================================",
   "main": "index.js",
   "directories": {
-    "example": "examples"
+    "example": "examples",
+    "test": "test"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,7 +14,7 @@
     "type": "git",
     "url": "https://github.com/Urigo/angular-embedly.git"
   },
-  "author": "",
+  "author": "MoranF",
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/Urigo/angular-embedly/issues"
@@ -21,6 +22,15 @@
   "devDependencies": {
     "karma": "~0.12.16",
     "karma-chrome-launcher": "~0.1.4",
-    "karma-jasmine": "~0.1.5"
+    "karma-jasmine": "~0.1.5",
+    "gulp": "~3.8.2"
+  },
+  "dependencies": {
+    "gulp": "~3.8.2",
+    "gulp-concat": "~2.2.0",
+    "gulp-uglify": "~0.3.1",
+    "karma": "~0.12.16",
+    "karma-jasmine": "~0.1.5",
+    "karma-chrome-launcher": "~0.1.4"
   }
 }

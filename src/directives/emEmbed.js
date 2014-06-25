@@ -3,7 +3,7 @@
  */
 
 (function (module) {
-    module.directive('emEmbed', function(embedlyService) {
+    module.directive('emEmbed', ['embedlyService', function(embedlyService) {
         return {
             restrict: 'E',
             scope:{
@@ -42,5 +42,5 @@
                 });
             }
         };
-    })
+    }])
 })(angularEmbedly);

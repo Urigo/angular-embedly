@@ -27,9 +27,9 @@
         }
 
 
-        this.$get = function($http) {
+        this.$get = ['$http', function($http) {
             return new embedly($http);
-        };
+        }];
 
     })
 })(angularEmbedly);

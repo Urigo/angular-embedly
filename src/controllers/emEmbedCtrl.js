@@ -3,7 +3,7 @@
  */
 
 (function (module) {
-    module.controller('emEmbedCtrl', function($scope) {
+    module.controller('emEmbedCtrl', ['$scope', function($scope) {
         $scope.embedCode = '';
-    })
+    }])
 })(angularEmbedly);

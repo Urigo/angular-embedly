@@ -4,9 +4,9 @@
 
 var embedlyModule = angular.module('embedlyModule2', ['angular-embedly']);
 
-embedlyModule.config(function(embedlyServiceProvider){
+embedlyModule.config(['embedlyServiceProvider', function(embedlyServiceProvider){
     embedlyServiceProvider.setKey('your key');
-});
+}]);
 
 embedlyModule.controller('embedCtrl2', function($scope, $http) {
     $scope.values = [];
