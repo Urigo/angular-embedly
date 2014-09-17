@@ -1,6 +1,7 @@
 {
   "name": "angular-embedly",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "main": "angular-embedly.js",
   "homepage": "https://github.com/Urigo/angular-embedly",
   "authors": [
     "Moran Fine <moranfine@gmail.com>"
