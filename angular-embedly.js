@@ -1,9 +1,12 @@
 /**
- * Created by moran on 21/06/14.
+ * Created by moran on 12/06/14.
  */
 
 var angularEmbedly = angular.module('angular-embedly', []);
-//service
+/**
+ * Created by moran on 12/06/14.
+ */
+
 (function (module) {
     module.provider('embedlyService', function () {
         var key;
@@ -16,41 +19,56 @@ var angularEmbedly = angular.module('angular-embedly', []);
         }
 
         function embedly($http) {
-            this.embed = function(inputUrl) {
-                var escapedUrl = escape(inputUrl);
+            this.embed = function(inputUrl, maxwidth) {
+                var escapedUrl = encodeURI(inputUrl);
                 var embedlyRequest = 'http://api.embed.ly/1/oembed?key=' + key + '&url=' +  escapedUrl;
+                if(typeof maxwidth !== 'undefined'){
+                    embedlyRequest = embedlyRequest + '&maxwidth=' + maxwidth;
+                }
                 return $http({method: 'GET', url: embedlyRequest});
             };
             this.extract = function(inputUrl) {
-                var escapedUrl = escape(inputUrl);
+                var escapedUrl = encodeURI(inputUrl);
                 var embedlyRequest = 'http://api.embed.ly/1/extract?key=' + key + '&url=' +  escapedUrl;
                 return $http({method: 'GET', url: embedlyRequest});
             };
         }
 
 
-        this.$get = function($http) {
+        this.$get = ['$http', function($http) {
             return new embedly($http);
-        };
+        }];
 
     })
-//controller
-    module.controller('emEmbedCtrl', function($scope) {
+})(angularEmbedly);
+
+/**
+ * Created by moran on 12/06/14.
+ */
+
+(function (module) {
+    module.controller('emEmbedCtrl', ['$scope', function($scope) {
         $scope.embedCode = '';
-    })
-//directive
-    module.directive('emEmbed', function(embedlyService) {
+    }])
+})(angularEmbedly);
+/**
+ * Created by moran on 12/06/14.
+ */
+
+(function (module) {
+    module.directive('emEmbed', ['embedlyService', function(embedlyService) {
         return {
             restrict: 'E',
             scope:{
-                urlsearch: '@'
+                urlsearch: '@',
+                maxwidth: '@'
             },
             controller: 'emEmbedCtrl',
             link: function(scope, element) {
                 scope.$watch('urlsearch', function(newVal) {
                     var previousEmbedCode = scope.embedCode;
                     if (newVal) {
-                        embedlyService.embed(newVal)
+                        embedlyService.embed(newVal, scope.maxwidth)
                             .then(function(data){
                                 switch(data.data.type) {
                                     case 'video':
@@ -78,5 +96,5 @@ var angularEmbedly = angular.module('angular-embedly', []);
                 });
             }
         };
-    })
+    }])
 })(angularEmbedly);
