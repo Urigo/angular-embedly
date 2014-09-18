@@ -7,14 +7,15 @@
         return {
             restrict: 'E',
             scope:{
-                urlsearch: '@'
+                urlsearch: '@',
+                maxwidth: '@'
             },
             controller: 'emEmbedCtrl',
             link: function(scope, element) {
                 scope.$watch('urlsearch', function(newVal) {
                     var previousEmbedCode = scope.embedCode;
                     if (newVal) {
-                        embedlyService.embed(newVal)
+                        embedlyService.embed(newVal, scope.maxwidth)
                             .then(function(data){
                                 switch(data.data.type) {
                                     case 'video':
