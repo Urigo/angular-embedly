@@ -7,15 +7,19 @@
         return {
             restrict: 'E',
             scope:{
-                urlsearch: '@'
+                urlsearch: '@',
+                maxwidth: '@'
             },
             controller: 'emEmbedCtrl',
             link: function(scope, element) {
+                scope.$parent.loading_embedly = false;
                 scope.$watch('urlsearch', function(newVal) {
                     var previousEmbedCode = scope.embedCode;
                     if (newVal) {
-                        embedlyService.embed(newVal)
+                        scope.$parent.loading_embedly = true;
+                        embedlyService.embed(newVal, scope.maxwidth)
                             .then(function(data){
+                                scope.$parent.loading_embedly = false;
                                 switch(data.data.type) {
                                     case 'video':
                                         scope.embedCode = data.data.html;
@@ -31,6 +35,7 @@
                                     element.html('<div>' + scope.embedCode + '</div>');
                                 }
                             }, function(error) {
+                                scope.$parent.loading_embedly = false;
                                 // promise rejected
                                 var previousEmbedCode = scope.embedCode;
                                 scope.embedCode = '';

@@ -16,4 +16,13 @@ gulp.task('default', function() {
         .pipe(concat('angular-embedly.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('em-minified'))
+
+    gulp.src([
+        'src/app.js',
+        'src/services/embedlyService.js',
+        'src/controllers/emEmbedCtrl.js',
+        'src/directives/emEmbed.js'
+    ])
+        .pipe(concat('angular-embedly.js'))
+        .pipe(gulp.dest(''))
 });
