@@ -63,6 +63,7 @@ var angularEmbedly = angular.module('angular-embedly', []);
                 urlsearch: '@',
                 maxwidth: '@'
             },
+            transclude: true,
             controller: 'emEmbedCtrl',
             link: function(scope, element) {
                 scope.$parent.loading_embedly = false;

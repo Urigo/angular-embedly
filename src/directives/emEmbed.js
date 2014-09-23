@@ -10,6 +10,7 @@
                 urlsearch: '@',
                 maxwidth: '@'
             },
+            transclude: true,
             controller: 'emEmbedCtrl',
             link: function(scope, element) {
                 scope.$parent.loading_embedly = false;
