@@ -67,11 +67,14 @@ var angularEmbedly = angular.module('angular-embedly', []);
             },
             controller: 'emEmbedCtrl',
             link: function(scope, element) {
+                scope.$parent.loading_embedly = false;
                 scope.$watch('urlsearch', function(newVal) {
                     var previousEmbedCode = scope.embedCode;
                     if (newVal) {
+                        scope.$parent.loading_embedly = true;
                         embedlyService.embed(newVal, scope.maxwidth)
                             .then(function(data){
+                                scope.$parent.loading_embedly = false;
                                 switch(data.data.type) {
                                     case 'video':
                                         scope.embedCode = data.data.html;
@@ -88,6 +91,7 @@ var angularEmbedly = angular.module('angular-embedly', []);
                                 }
                             }, function(error) {
                                 // promise rejected
+                                scope.$parent.loading_embedly = false;
                                 var previousEmbedCode = scope.embedCode;
                                 scope.embedCode = '';
                                 if(previousEmbedCode !== scope.embedCode) {
