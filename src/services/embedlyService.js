@@ -14,9 +14,14 @@
         }
 
         function embedly($http) {
-            this.embed = function(inputUrl) {
+            this.embed = function(inputUrl, maxwidth) {
                 var escapedUrl = encodeURI(inputUrl);
                 var embedlyRequest = 'http://api.embed.ly/1/oembed?key=' + key + '&url=' +  escapedUrl;
+
+                if(typeof maxwidth !== 'undefined'){
+                    embedlyRequest = embedlyRequest + '&maxwidth=' + maxwidth;
+                }
+
                 return $http({method: 'GET', url: embedlyRequest});
             };
             this.extract = function(inputUrl) {
