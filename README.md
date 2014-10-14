@@ -24,9 +24,9 @@ Note: The directive only supports embedding of video and photo.
         embedlyServiceProvider.setKey('your key');
     });
 ```
-* Add angular-embedly directive to the html
+* Add angular-embedly directive to the html, maxwidth is optional
 ```html
-    <em-embed urlsearch="{{your.url.goes.here}}"></em-embed>
+    <em-embed urlsearch="{{your.url.goes.here}}" maxwidth="number"></em-embed>
 ```
 
 
