@@ -24,11 +24,12 @@ Note: The directive only supports embedding of video and photo.
         embedlyServiceProvider.setKey('your key');
     });
 ```
-* Add angular-embedly directive to the html, maxwidth is optional
+* Add angular-embedly directive to the html, maxwidth is optional and specifies the maximum width of the embed
 ```html
     <em-embed urlsearch="{{your.url.goes.here}}" maxwidth="number"></em-embed>
 ```
 
+* In the including scope you can watch `loading_embedly` for the status of the Embed.ly request. This can be useful for making a loading indicator.
 
 ## Example
 You can check out some examples here: https://github.com/Urigo/angular-embedly/tree/master/examples
