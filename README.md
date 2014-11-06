@@ -24,12 +24,19 @@ Note: The directive only supports embedding of video and photo.
         embedlyServiceProvider.setKey('your key');
     });
 ```
-* Add angular-embedly directive to the html, maxwidth is optional and specifies the maximum width of the embed
+* Add angular-embedly directive to the html
 ```html
-    <em-embed urlsearch="{{your.url.goes.here}}" maxwidth="number"></em-embed>
+    <em-embed urlsearch="{{your.url.goes.here}}"></em-embed>
 ```
 
+## Optional
 * In the including scope you can watch `loading_embedly` for the status of the Embed.ly request. This can be useful for making a loading indicator.
+
+* `maxwidth` attribute can be used to specify the maximum width of the embed 
+* `onempty` attribute specifies a function in the controller's scope that should be executed if Embed.ly returns an empty result
+```html
+    <em-embed urlsearch="{{your.url.goes.here}}" maxwidth="number" onempty="yourFunction('Ai, it is empty!')"></em-embed>
+```
 
 ## Example
 You can check out some examples here: https://github.com/Urigo/angular-embedly/tree/master/examples
