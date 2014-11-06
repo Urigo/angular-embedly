@@ -8,11 +8,21 @@
             restrict: 'E',
             scope:{
                 urlsearch: '@',
-                maxwidth: '@'
+                maxwidth: '@',
+                onempty: '&'
             },
             controller: 'emEmbedCtrl',
-            link: function(scope, element) {
+            link: function(scope, element, attributes) {
+                
+                // This function should be called when the oEmbed returns no embed code
+                function handleEmpty(){
+                    if(scope.onempty != undefined && typeof(scope.onempty) == "function"){
+                        scope.onempty();
+                    }
+                }
+                
                 scope.$parent.loading_embedly = false;
+
                 scope.$watch('urlsearch', function(newVal) {
                     var previousEmbedCode = scope.embedCode;
                     if (newVal) {
@@ -22,12 +32,24 @@
                                 scope.$parent.loading_embedly = false;
                                 switch(data.data.type) {
                                     case 'video':
-                                        scope.embedCode = data.data.html;
+                                        if(data.data.html == undefined){
+                                            handleEmpty();
+                                        }else{
+                                            scope.embedCode = data.data.html;
+                                        }
                                         break;
                                     case 'photo':
-                                        scope.embedCode = '<img src="' + data.data.url + '">';
+                                        if(data.data.url == undefined){
+                                            handleEmpty();
+                                        }else{
+                                            scope.embedCode = '<img src="' + data.data.url + '">';
+                                        }
                                         break;
                                     default:
+                                        // call the dev's handling code, he probably assumed he would get a video 
+                                        // or photo (otherwise he'd use a different tool), so for him this result
+                                        // is the same as an empty result.
+                                        handleEmpty();
                                         scope.embedCode = '';
                                 }
                                 if(previousEmbedCode !== scope.embedCode) {
@@ -39,6 +61,7 @@
                                 scope.$parent.loading_embedly = false;
                                 var previousEmbedCode = scope.embedCode;
                                 scope.embedCode = '';
+
                                 if(previousEmbedCode !== scope.embedCode) {
                                     element.html('<div>' + scope.embedCode + '</div>');
                                 }
