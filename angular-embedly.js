@@ -101,7 +101,12 @@ var angularEmbedly = angular.module('angular-embedly', []);
                                         if(data.data.html == undefined){
                                             handleEmpty();
                                         }else{
-                                            scope.embedCode = data.data.html;
+                                            if(window.location.protocol.indexOf('file:') > -1){
+                                                // Replace //cdn.embedly URL so it won't resolve to file://cdn.embedly
+                                                scope.embedCode = data.data.html.replace('src=\"//cdn.embedly', 'src=\"https://cdn.embedly');
+                                            }else{
+                                                scope.embedCode = data.data.html;
+                                            }
                                         }
                                         break;
                                     case 'photo':
