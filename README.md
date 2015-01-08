@@ -33,6 +33,7 @@ Note: The directive only supports embedding of video and photo.
 * In the including scope you can watch `loading_embedly` for the status of the Embed.ly request. This can be useful for making a loading indicator.
 
 * `maxwidth` attribute can be used to specify the maximum width of the embed 
+* `scheme` attribute to specify the scheme (e.g. `http`) for the embed, useful when developing for applications that run on `file://`, like Cordova apps 
 * `onempty` attribute specifies a function in the controller's scope that should be executed if Embed.ly returns an empty result
 ```html
     <em-embed urlsearch="{{your.url.goes.here}}" maxwidth="number" onempty="yourFunction('Ai, it is empty!')"></em-embed>
