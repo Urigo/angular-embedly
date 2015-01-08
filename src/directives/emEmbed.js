@@ -9,6 +9,7 @@
             scope:{
                 urlsearch: '@',
                 maxwidth: '@',
+                scheme: '@',
                 onempty: '&'
             },
             controller: 'emEmbedCtrl',
@@ -27,7 +28,7 @@
                     var previousEmbedCode = scope.embedCode;
                     if (newVal) {
                         scope.$parent.loading_embedly = true;
-                        embedlyService.embed(newVal, scope.maxwidth)
+                        embedlyService.embed(newVal, scope.maxwidth, scope.scheme)
                             .then(function(data){
                                 scope.$parent.loading_embedly = false;
                                 switch(data.data.type) {

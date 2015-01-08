@@ -30,12 +30,16 @@ var angularEmbedly = angular.module('angular-embedly', []);
         }
 
         function embedly($http) {
-            this.embed = function(inputUrl, maxwidth) {
+            this.embed = function(inputUrl, maxwidth, scheme) {
                 var escapedUrl = encodeURI(inputUrl);
                 var embedlyRequest = getProtocol() + '://api.embed.ly/1/oembed?key=' + key + '&url=' +  escapedUrl;
 
                 if(typeof maxwidth !== 'undefined'){
                     embedlyRequest = embedlyRequest + '&maxwidth=' + maxwidth;
+                }
+
+                if(typeof scheme !== 'undefined'){
+                    embedlyRequest = embedlyRequest + '&scheme=' + scheme;
                 }
 
                 return $http({method: 'GET', url: embedlyRequest});
@@ -75,6 +79,7 @@ var angularEmbedly = angular.module('angular-embedly', []);
             scope:{
                 urlsearch: '@',
                 maxwidth: '@',
+                scheme: '@',
                 onempty: '&'
             },
             controller: 'emEmbedCtrl',
@@ -93,7 +98,7 @@ var angularEmbedly = angular.module('angular-embedly', []);
                     var previousEmbedCode = scope.embedCode;
                     if (newVal) {
                         scope.$parent.loading_embedly = true;
-                        embedlyService.embed(newVal, scope.maxwidth)
+                        embedlyService.embed(newVal, scope.maxwidth, scope.scheme)
                             .then(function(data){
                                 scope.$parent.loading_embedly = false;
                                 switch(data.data.type) {
