@@ -25,12 +25,16 @@
         }
 
         function embedly($http) {
-            this.embed = function(inputUrl, maxwidth) {
+            this.embed = function(inputUrl, maxwidth, scheme) {
                 var escapedUrl = encodeURI(inputUrl);
                 var embedlyRequest = getProtocol() + '://api.embed.ly/1/oembed?key=' + key + '&url=' +  escapedUrl;
 
                 if(typeof maxwidth !== 'undefined'){
                     embedlyRequest = embedlyRequest + '&maxwidth=' + maxwidth;
+                }
+
+                if(typeof scheme !== 'undefined'){
+                    embedlyRequest = embedlyRequest + '&scheme=' + scheme;
                 }
 
                 return $http({method: 'GET', url: embedlyRequest});
