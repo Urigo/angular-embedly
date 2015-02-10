@@ -109,6 +109,13 @@ var angularEmbedly = angular.module('angular-embedly', []);
                                             scope.embedCode = data.data.html;
                                         }
                                         break;
+                                    case 'rich':
+                                        if(data.data.html == undefined){
+                                            handleEmpty();
+                                        }else{
+                                            scope.embedCode = data.data.html;
+                                        }
+                                        break;
                                     case 'photo':
                                         if(data.data.url == undefined){
                                             handleEmpty();
