@@ -41,7 +41,7 @@
             };
             this.extract = function(inputUrl) {
                 var escapedUrl = encodeURI(inputUrl);
-                var embedlyRequest = getProtocol + '://api.embed.ly/1/extract?key=' + key + '&url=' +  escapedUrl;
+                var embedlyRequest = getProtocol() + '://api.embed.ly/1/extract?key=' + key + '&url=' +  escapedUrl;
                 return $http({method: 'GET', url: embedlyRequest});
             };
         }
