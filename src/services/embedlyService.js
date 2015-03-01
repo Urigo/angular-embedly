@@ -2,8 +2,8 @@
  * Created by moran on 12/06/14.
  */
 
-(function (module) {
-    module.provider('embedlyService', function () {
+(function(module) {
+    module.provider('embedlyService', function() {
         var key;
         var secure;
         this.setKey = function(userKey) {
@@ -21,28 +21,34 @@
         }
 
         function getProtocol() {
-            return secure ? 'https' : 'https' ;
+            return secure ? 'https' : 'https';
         }
 
         function embedly($http) {
             this.embed = function(inputUrl, maxwidth, scheme) {
                 var escapedUrl = encodeURI(inputUrl);
-                var embedlyRequest = getProtocol() + '://api.embed.ly/1/oembed?key=' + key + '&url=' +  escapedUrl;
+                var embedlyRequest = getProtocol() + '://api.embed.ly/1/oembed?key=' + key + '&url=' + escapedUrl;
 
-                if(typeof maxwidth !== 'undefined'){
+                if (typeof maxwidth !== 'undefined') {
                     embedlyRequest = embedlyRequest + '&maxwidth=' + maxwidth;
                 }
 
-                if(typeof scheme !== 'undefined'){
+                if (typeof scheme !== 'undefined') {
                     embedlyRequest = embedlyRequest + '&scheme=' + scheme;
                 }
 
-                return $http({method: 'GET', url: embedlyRequest});
+                return $http({
+                    method: 'GET',
+                    url: embedlyRequest
+                });
             };
             this.extract = function(inputUrl) {
                 var escapedUrl = encodeURI(inputUrl);
-                var embedlyRequest = getProtocol + '://api.embed.ly/1/extract?key=' + key + '&url=' +  escapedUrl;
-                return $http({method: 'GET', url: embedlyRequest});
+                var embedlyRequest = getProtocol() + '://api.embed.ly/1/extract?key=' + key + '&url=' + escapedUrl;
+                return $http({
+                    method: 'GET',
+                    url: embedlyRequest
+                });
             };
         }
 
