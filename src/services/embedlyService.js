@@ -3,59 +3,59 @@
  */
 
 (function(module) {
-  module.provider('embedlyService', function() {
-    var key;
-    var secure;
-    this.setKey = function(userKey) {
-      key = userKey;
-      return key;
-    }
-    this.getKey = function() {
-      return key;
-    }
-    this.secure = function(value) {
-      if (!value) {
-        return secure;
-      }
-      secure = value;
-    }
-
-    function getProtocol() {
-      return secure ? 'https' : 'https';
-    }
-
-    function embedly($http) {
-      this.embed = function(inputUrl, maxwidth, scheme) {
-        var escapedUrl = encodeURI(inputUrl);
-        var embedlyRequest = getProtocol() + '://api.embed.ly/1/oembed?key=' + key + '&url=' + escapedUrl;
-
-        if (typeof maxwidth !== 'undefined') {
-          embedlyRequest = embedlyRequest + '&maxwidth=' + maxwidth;
+    module.provider('embedlyService', function() {
+        var key;
+        var secure;
+        this.setKey = function(userKey) {
+            key = userKey;
+            return key;
+        }
+        this.getKey = function() {
+            return key;
+        }
+        this.secure = function(value) {
+            if (!value) {
+                return secure;
+            }
+            secure = value;
         }
 
-        if (typeof scheme !== 'undefined') {
-          embedlyRequest = embedlyRequest + '&scheme=' + scheme;
+        function getProtocol() {
+            return secure ? 'https' : 'https';
         }
 
-        return $http({
-          method: 'GET',
-          url: embedlyRequest
-        });
-      };
-      this.extract = function(inputUrl) {
-        var escapedUrl = encodeURI(inputUrl);
-        var embedlyRequest = getProtocol() + '://api.embed.ly/1/extract?key=' + key + '&url=' + escapedUrl;
-        return $http({
-          method: 'GET',
-          url: embedlyRequest
-        });
-      };
-    }
+        function embedly($http) {
+            this.embed = function(inputUrl, maxwidth, scheme) {
+                var escapedUrl = encodeURI(inputUrl);
+                var embedlyRequest = getProtocol() + '://api.embed.ly/1/oembed?key=' + key + '&url=' + escapedUrl;
+
+                if (typeof maxwidth !== 'undefined') {
+                    embedlyRequest = embedlyRequest + '&maxwidth=' + maxwidth;
+                }
+
+                if (typeof scheme !== 'undefined') {
+                    embedlyRequest = embedlyRequest + '&scheme=' + scheme;
+                }
+
+                return $http({
+                    method: 'GET',
+                    url: embedlyRequest
+                });
+            };
+            this.extract = function(inputUrl) {
+                var escapedUrl = encodeURI(inputUrl);
+                var embedlyRequest = getProtocol() + '://api.embed.ly/1/extract?key=' + key + '&url=' + escapedUrl;
+                return $http({
+                    method: 'GET',
+                    url: embedlyRequest
+                });
+            };
+        }
 
 
-    this.$get = ['$http', function($http) {
-      return new embedly($http);
+        this.$get = ['$http', function($http) {
+            return new embedly($http);
         }];
 
-  })
+    })
 })(angularEmbedly);
