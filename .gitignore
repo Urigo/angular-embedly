@@ -1,1 +1,5 @@
 .idea
+
+#vendor files
+node_modules
+bower_components
