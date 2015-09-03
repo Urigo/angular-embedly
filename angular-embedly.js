@@ -31,7 +31,7 @@ var angularEmbedly = angular.module('angular-embedly', []);
 
         function embedly($http) {
             this.embed = function(inputUrl, maxwidth, scheme) {
-                var escapedUrl = encodeURI(inputUrl);
+                var escapedUrl = encodeURIComponent(inputUrl);
                 var embedlyRequest = getProtocol() + '://api.embed.ly/1/oembed?key=' + key + '&url=' +  escapedUrl;
 
                 if(typeof maxwidth !== 'undefined'){
@@ -45,7 +45,7 @@ var angularEmbedly = angular.module('angular-embedly', []);
                 return $http({method: 'GET', url: embedlyRequest});
             };
             this.extract = function(inputUrl) {
-                var escapedUrl = encodeURI(inputUrl);
+                var escapedUrl = encodeURIComponent(inputUrl);
                 var embedlyRequest = getProtocol() + '://api.embed.ly/1/extract?key=' + key + '&url=' +  escapedUrl;
                 return $http({method: 'GET', url: embedlyRequest});
             };
