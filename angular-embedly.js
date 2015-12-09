@@ -120,7 +120,11 @@ var angularEmbedly = angular.module('angular-embedly', []);
                                         if(data.data.url == undefined){
                                             handleEmpty();
                                         }else{
-                                            scope.embedCode = '<img src="' + data.data.url + '">';
+                                            if (scope.maxwidth) {
+                                                scope.embedCode = '<img style="max-width: ' + scope.maxwidth + 'px;" src="' + data.data.url + '">';
+                                            } else {
+                                                scope.embedCode = '<img src="' + data.data.url + '">';
+                                            }
                                         }
                                         break;
                                     default:
