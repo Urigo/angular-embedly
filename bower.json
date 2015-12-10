@@ -1,9 +1,10 @@
 {
-  "name": "angular-embedly",
+  "name": "angular-embedly-extended",
   "version": "0.0.9",
-  "homepage": "https://github.com/Urigo/angular-embedly",
+  "homepage": "https://github.com/odellcraig/angular-embedly",
   "authors": [
-    "Moran Fine <moranfine@gmail.com>"
+    "Moran Fine <moranfine@gmail.com>",
+    "Craig Odell <odellcraig@gmail.com>"
   ],
   "main": "angular-embedly.js",
   "license": "MIT",
