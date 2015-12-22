@@ -5,8 +5,9 @@
 describe('Unit: embedlyService', function() {
     var $httpBackend;
     var service;
-    var escapedUrl = encodeURI('https://www.youtube.com/watch?v=vIaH35-MLsk');
-    var embedlyRequest = 'http://api.embed.ly/1/oembed?key=123&url=' +  escapedUrl;
+    var url = 'https://www.youtube.com/watch?v=vIaH35-MLsk';
+    var escapedUrl = encodeURIComponent(url);
+    var embedlyRequest = 'https://api.embed.ly/1/oembed?key=123&url=' +  escapedUrl;
     var provider;
     // excuted before each "it" is run.
     beforeEach(function(){
@@ -29,7 +30,7 @@ describe('Unit: embedlyService', function() {
         var result;
         $httpBackend.expectGET(embedlyRequest).respond(returnData);
 
-        var returnedPromise = service.embed(escapedUrl);
+        var returnedPromise = service.embed(url);
         returnedPromise.then(function(response) {
             result = response.data;
         });
