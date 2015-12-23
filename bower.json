@@ -1,9 +1,10 @@
 {
-  "name": "angular-embedly",
-  "version": "0.0.8",
-  "homepage": "https://github.com/Urigo/angular-embedly",
+  "name": "angular-embedly-extended",
+  "version": "0.0.10",
+  "homepage": "https://github.com/odellcraig/angular-embedly",
   "authors": [
-    "Moran Fine <moranfine@gmail.com>"
+    "Moran Fine <moranfine@gmail.com>",
+    "Craig Odell <odellcraig@gmail.com>"
   ],
   "main": "angular-embedly.js",
   "license": "MIT",
@@ -15,9 +16,9 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.18"
+    "angular": "~1.4"
   },
   "devDependencies": {
-    "angular-mocks": "~1.2.18"
+    "angular-mocks": "~1.4"
   }
 }
