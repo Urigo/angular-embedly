@@ -20,17 +20,17 @@
     "url": "https://github.com/Urigo/angular-embedly/issues"
   },
   "devDependencies": {
-    "karma": "~0.12.16",
-    "karma-chrome-launcher": "~0.1.4",
-    "karma-jasmine": "~0.1.5",
-    "gulp": "~3.8.2"
+    "karma": "~1.7.0",
+    "karma-chrome-launcher": "~2.1.1",
+    "karma-jasmine": "~1.1.0",
+    "gulp": "~3.9.1"
   },
   "dependencies": {
-    "gulp": "~3.8.2",
-    "gulp-concat": "~2.2.0",
-    "gulp-uglify": "~0.3.1",
-    "karma": "~0.12.16",
-    "karma-jasmine": "~0.1.5",
-    "karma-chrome-launcher": "~0.1.4"
+    "gulp": "~3.9.1",
+    "gulp-concat": "~2.6.1",
+    "gulp-uglify": "~3.0.0",
+    "karma": "~1.7.0",
+    "karma-jasmine": "~1.1.0",
+    "karma-chrome-launcher": "~2.1.1"
   }
 }
