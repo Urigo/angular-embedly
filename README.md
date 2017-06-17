@@ -1,6 +1,8 @@
 angular-embedly – angular wrapper for embed.ly
 ==============================================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Urigo/angular-embedly.svg)](https://greenkeeper.io/)
+
 This module utilizes the embed.ly functionality and wraps it in angular entities. The module comprises a directive and a service, which supports embed.ly's embedding API and their information extraction API. 
 To embed a video or a photo use the directive, and for information extraction use the service.
 
